@@ -7,6 +7,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 import matplotlib.pyplot as plt
 import seaborn as sns
+import joblib
 
 import logging
 
@@ -119,3 +120,10 @@ if os.path.exists(test_file):
             logging.info(f"Test sample classified as: {pred_label}")
 else:
     print("No test_samples.csv file found. Skipping test predictions.")
+    
+    
+# Save model and vectorizer
+os.makedirs('model', exist_ok=True)
+joblib.dump(model, 'model/model.pkl')
+joblib.dump(vectorizer, 'model/vectorizer.pkl')
+logging.info('Model and vectorizer saved in model/ directory')
