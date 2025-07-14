@@ -8,6 +8,7 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
+# from joblib import dump
 
 import logging
 
@@ -81,6 +82,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 logging.info("Training model...")
 model = MultinomialNB()
 model.fit(X_train, y_train)
+
+# # Save the trained model
+# model_path = 'model.joblib'
+# dump(model, model_path)
+# logging.info(f'Model saved as {model_path}')
 
 # 5. Evaluate
 logging.info("Evaluating model...")
